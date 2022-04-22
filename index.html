@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Throw Dice</title>
+    <style>
+        #container {
+            width: 70%;
+            margin: auto;
+            display: flex;
+            justify-content: space-around;
+            margin-top: 70px;
+            flex-wrap: wrap;
+        }
+
+        #container div {
+            width: 170px;
+            height: 170px;
+            border-radius: 20px;
+            text-align: center;
+            font-size: 60px;
+            background-color: #333;
+            color: white;
+
+        }
+
+        p {
+            margin-top: 50px;
+            font-weight: 700;
+        }
+
+        #button {
+            width: 17%;
+            height: auto;
+            margin: auto;
+            margin-top: 70px;
+        }
+
+        button {
+            font-size: 40px;
+            background-color: green;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            padding: 6px;
+        }
+
+
+        button:active {
+            transform: translateY(4px);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+
+        <div id="d1">
+            <p id="1">0</p>
+        </div>
+
+        <div id="d2">
+            <p id="2">0</p>
+        </div>
+
+        <div id="d3">
+            <p id="3">0</p>
+        </div>
+    </div>
+
+    <div id="button">
+        <button onclick="rollDice()">ROLL DICE</button>
+    </div>
+</body>
+<script>
+    function rollDice() {
+        var m1 = document.getElementById("1");
+        var m2 = document.getElementById("2");
+        var m3 = document.getElementById("3");
+
+        var d1 = document.getElementById("d1");
+        var d2 = document.getElementById("d2");
+        var d3 = document.getElementById("d3");
+
+        m1.innerText = Math.floor((Math.random() * 6) + 1);
+        m2.innerText = Math.floor((Math.random() * 6) + 1);
+        m3.innerText = Math.floor((Math.random() * 6) + 1);
+
+        var a = m1.innerText;
+        var b = m2.innerText;
+        var c = m3.innerText;
+
+        if (a > b && a > c) {
+            d1.style.backgroundColor = "green";
+        } else if (b > c && b > a) {
+            d2.style.backgroundColor = "green";
+        } else {
+            d3.style.backgroundColor = "green";
+        }
+
+        if (a < b && a < c) {
+            d1.style.backgroundColor = "red";
+        } else if (b < c && b < a) {
+            d2.style.backgroundColor = "red";
+        } else {
+            d3.style.backgroundColor = "red";
+        }
+
+        if ((a > b && a < c) || (a < b && a > c)) {
+            d1.style.backgroundColor = "yellow";
+        } else if ((b > c && b < a) || (b < c && b > a)) {
+            d2.style.backgroundColor = "yellow";
+        } else {
+            d3.style.backgroundColor = "yellow";
+        }
+
+
+        if (a == b && a == c) {
+            d1.style.backgroundColor = "blue";
+            d2.style.backgroundColor = "blue";
+            d3.style.backgroundColor = "blue";
+        } else if (a == b) {
+            d1.style.backgroundColor = "blue";
+            d2.style.backgroundColor = "blue";
+        } else if (a == c) {
+            d1.style.backgroundColor = "blue";
+            d3.style.backgroundColor = "blue";
+        } else if (b == c) {
+            d2.style.backgroundColor = "blue";
+            d3.style.backgroundColor = "blue";
+        }
+
+
+
+
+    }
+</script>
+
+</html>
